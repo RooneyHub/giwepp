@@ -39,10 +39,10 @@ CREATE TABLE `cuentas` (
 --
 
 INSERT INTO `cuentas` (`id_cuenta`, `id_dueño`, `c_correo`, `c_usuario`, `c_password`) VALUES
-(1000, 1000, 'Rooneytodd@hotmail.com', 'rooney', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(1001, 1001, 'richard@hotmail.com', 'ricardo','40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(1002, 1002, 'chaba_herrera@hotmail.com', 'chaba', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(1003, 1003, 'lupita_tovar@hotmail.com', 'lupita','40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+(1000, 1000, 'Rooneytodd@hotmail.com', 'rooney', '123'),
+(1001, 1001, 'richard@hotmail.com', 'ricardo','123'),
+(1002, 1002, 'chaba_herrera@hotmail.com', 'chaba', '123'),
+(1003, 1003, 'lupita_tovar@hotmail.com', 'lupita','123');
 
 -- --------------------------------------------------------
 
