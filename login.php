@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="utf-8">
-        <title>MECSA System Login</title>
+        <title>GIWEPP Login</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
@@ -80,7 +80,7 @@
                                     $(function () {
                                         // Para Manuel, Oscar y Ricardo: aquí se ponde la redirección a la página de inicio
                                         // del sistema MECSA.
-                                        window.location.href = 'index.php';
+                                        window.location.href = 'org.giwepp_pf.vista/index.html';
                                     });
                                 } else if ($.trim(data) === $.trim("error")) {
                                     // do something with response.message or whatever other data on error
@@ -115,7 +115,7 @@
         <div id='loading'><img src='assets/img/loading.gif'
                                style='margin:0 auto; position: absolute; top: 50%; left: 50%; margin: -30px 0 0 -30px;'></div>
         <div class="page-container">
-            <h1>Inicio de sesión Pierre</h1>
+            <h1>Inicio de sesión Pierre Faure System</h1>
 
             <form method="POST" action="org.giwepp_pf.controlador/controladorLogin.php" id="formLogin" name="formLogin">
                 <input type="text" id="txt_username" name="txt_username" class="username" placeholder="Usuario">

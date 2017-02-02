@@ -150,9 +150,9 @@ if (!empty($_SESSION['user_name'])) {
                             </a>
                         </li>
                         <li>
-                            <a href="org.giwepp_pf.vista/persona_registrar.php" class="ajax-link">
+                            <a href="org.mecsa.vista/Defectos.php" class="ajax-link">
                                 <i class="fa fa-pencil-square-o"></i>
-                                <span class="hidden-xs">Registrar Persona</span>
+                                <span class="hidden-xs">Defectos</span>
                             </a>
                         </li>
                         

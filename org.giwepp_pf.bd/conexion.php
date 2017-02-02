@@ -11,10 +11,9 @@ class conex {
     public $username = DB_USER;
     public $pasword = DB_PASS;
 
-
     public function _construct() {
-        try {		
-			$dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->database";
+        try {
+            $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->database";
             $this->_db = new PDO($dsn, DB_USER, DB_PASS);
         } catch (PDOException $e) {
             echo "Hubo un error: " . $e->getMessage();
