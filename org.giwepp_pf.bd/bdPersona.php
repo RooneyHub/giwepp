@@ -41,7 +41,7 @@ class bdPersona extends conex {
         $this->_db->beginTransaction();
         $statement = $this->_db->prepare(
                 "insert into personas(u_nombre,u_ape_pat,u_ape_mat,u_fecha_nac,u_activo,u_fecha_reg) "
-                . "values (?,?,?,?,?,CURRENT_TIMESTAMP);");
+                . "values (?,?,?,STR_TO_DATE(?, '%m/%d/%Y'),?,CURRENT_TIMESTAMP);");
         $nombre=$emp->getU_nombre();
         $apP=$emp->getU_ape_pat();
         $apM=$emp->getU_ape_mat();
@@ -57,10 +57,10 @@ class bdPersona extends conex {
         try {
             $statement->execute();
             $this->_db->commit();
-            echo 'Exito';
-            //header('Location:index.php');
+            console.log('Exito'); 
+            header('Location:../org.giwepp_pf.vista/vistaPersona.php');
         } catch (Exception $ex) {
-            echo 'Error...';
+            console.log('Error');
             $this->_db->rollBack();
         }
         //return $result;
@@ -100,12 +100,19 @@ class bdPersona extends conex {
 //        }
 //    }
 
-    public function select() {
-        $statement = $this->_db->prepare('select * from persona');
+    public function seleccionarTodoPersonas() {
+        $statement = $this->_db->prepare('SELECT personas.id_persona, personas.u_nombre, personas.u_ape_pat, personas.u_ape_mat, 
+                                          personas.u_fecha_nac, personas. u_fecha_reg, cuentas.c_correo, 
+                                          cuentas.c_usuario, cuentas.c_password, personas.u_activo FROM personas
+                                          INNER JOIN cuentas ON personas.id_persona = cuentas.id_dueño
+                                          ORDER by id_persona asc;');
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
     }
+    
+    
+
 
 }
 
