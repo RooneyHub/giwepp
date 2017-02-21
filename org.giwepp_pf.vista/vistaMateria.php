@@ -1,3 +1,9 @@
+<?php
+require_once '../org.giwepp_pf.bd/bdMateria.php';
+$materias = new bdMateria();
+$todoMaterias = $materias->seleccionarTodoMaterias();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -82,13 +88,58 @@
                         <!-- END BASIC VALIDATION -->
 
 
+                           
+               <div class="row">
+                            <div class="col-md-12">
+                                <h4>Datos generales de las materias registradas</h4>
+                            </div>
+                            <div class="col-lg-12">
+
+                                <div class="card">
+                                    <div class="table-responsive">
+                                        <table id="datatable1" class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sort-numeric">ID Materia</th>
+                                                    <th class="sort-alpha">Nombre</th>
+                                                    <th>Descrioción</th>
+                                                    
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($todoMaterias as $row): ?>
+                                                    <tr>
+                                                        <td><?php echo $row['id_materia']; ?></td>
+                                                        <td><?php echo $row['ma_nombre']; ?></td>
+                                                        <td><?php echo $row['ma_descri']; ?></td>
+                                                        
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                    </div><!--end .table-responsive -->
+                                </div>
+                            </div><!--end .col -->
+                        </div><!--end .row -->
+                        <!-- END DATATABLE 1 -->
+
 
                     </div><!--end .section-body -->
                 </section>
             </div><!--end #content-->
             <!-- END CONTENT -->
-            
 
+
+
+
+                    </div><!--end .section-body -->
+                </section>
+            </div><!--end #content-->
+            <!-- END CONTENT -->
+
+
+         
 
 
 

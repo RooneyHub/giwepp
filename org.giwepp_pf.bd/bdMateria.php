@@ -103,6 +103,14 @@ class bdMateria extends conex {
         return $result;
     }
 
+
+     public function seleccionarTodoMaterias() {
+        $statement = $this->_db->prepare('SELECT materias.id_materia, materias.ma_nombre, materias.ma_descri FROM materias');
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
+
 }
 
 ?>

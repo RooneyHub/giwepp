@@ -111,7 +111,52 @@ class bdPersona extends conex {
         return $result;
     }
     
+
+       public function seleccionarTodoEstudiante() {
+        $statement = $this->_db->prepare('SELECT personas.id_persona, personas.u_nombre, personas.u_ape_pat, personas.u_ape_mat, 
+                                          personas.u_fecha_nac, personas. u_fecha_reg, cuentas.c_correo, 
+                                          cuentas.c_usuario, cuentas.c_password, personas.u_activo FROM personas
+                                          INNER JOIN cuentas ON personas.id_persona = cuentas.id_dueño WHERE cuentas.c_tipo_cuenta = 2
+                                          ORDER by id_persona asc;');
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
+
+
+       public function seleccionarTodoProfesor() {
+        $statement = $this->_db->prepare('SELECT personas.id_persona, personas.u_nombre, personas.u_ape_pat, personas.u_ape_mat, 
+                                          personas.u_fecha_nac, personas. u_fecha_reg, cuentas.c_correo, 
+                                          cuentas.c_usuario, cuentas.c_password, personas.u_activo FROM personas
+                                          INNER JOIN cuentas ON personas.id_persona = cuentas.id_dueño WHERE cuentas.c_tipo_cuenta = 3
+                                          ORDER by id_persona asc;');
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
     
+
+           public function seleccionarTodoPersonas_SC() {
+        $statement = $this->_db->prepare('SELECT * from personas;');
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
+
+                  public function seleccionarIdPersonas($nombre, $apep, $apem) {
+        $statement = $this->_db->prepare('SELECT id_persona from personas where u_nombre = ? and u_ape_pat = ? and u_ape_mat = ? ;');
+        $statement->bindParam(1, $nombre);
+        $statement->bindParam(2, $apep);
+        $statement->bindParam(3, $apem);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
+
+
+    
+
+        //$pasres = en
 
 
 }

@@ -1077,7 +1077,7 @@ a.text-primary-light:hover {
   color: #56cdc5;
 }
 .text-primary {
-  color: #0aa89e;
+  color: #220ebb;
 }
 a.text-primary:hover {
   color: #077871;
@@ -2777,7 +2777,7 @@ textarea.autosize {
   height: 2px;
   width: 10px;
   visibility: hidden;
-  background-color: #0aa89e;
+  background-color: #220ebb;
   -webkit-transition: 0.2s ease all;
   -o-transition: 0.2s ease all;
   transition: 0.2s ease all;
