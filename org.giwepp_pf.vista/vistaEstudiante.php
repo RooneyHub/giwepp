@@ -1,8 +1,14 @@
 <?php
+
+include('../org.giwepp_pf.bd/bd_checar_persona.php');
+if($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 3){echo "<meta http-equiv='refresh' content='0;url=index.html'>";}
+
+
 require_once '../org.giwepp_pf.bd/bdPersona.php';
 $estudiantes = new bdPersona();
 $todoEstudiantes = $estudiantes->seleccionarTodoEstudiante();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,7 +57,7 @@ $todoEstudiantes = $estudiantes->seleccionarTodoEstudiante();
     <body class="menubar-hoverable header-fixed ">
 
 
-        <div w3-include-html="menuCabecera.html"></div>
+        <div w3-include-html="menuCabecera2.php?nombre_completo="<?php echo $_SESSION['nombre_completo'];?>" "></div>
 
 
         <!-- BEGIN BASE-->
@@ -72,6 +78,7 @@ $todoEstudiantes = $estudiantes->seleccionarTodoEstudiante();
                         <div class="row">
 
                             <div class="col-lg-offset-1 col-md-8">
+                            <h3 class="text-primary">Usuario <?php echo $_SESSION['nombre_usuario'];?></h3> 
                                 <h1 class="text-primary">Registro Estudiante</h1>
                             </div><!--end .col -->
 
@@ -215,9 +222,11 @@ $todoEstudiantes = $estudiantes->seleccionarTodoEstudiante();
 
 
 
+           <?php if($_SESSION['user_type'] == 0){ ?>   <div w3-include-html="menuBaseAdministrador.html"></div>  <?php } ?>
+           <?php if($_SESSION['user_type'] == 2){ ?>   <div w3-include-html="menuBaseEstudiante.html"></div>  <?php } ?>
+           <?php if($_SESSION['user_type'] == 3){ ?>   <div w3-include-html="menuBaseProfesor.html"></div>  <?php } ?>
 
-
-            <div w3-include-html="menuBase.html"></div> 
+           
 
             <script>
                 w3IncludeHTML();

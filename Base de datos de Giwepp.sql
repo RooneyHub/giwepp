@@ -54,16 +54,7 @@ CREATE TABLE generaciones
 	ge_fecha_fin DATE NOT NULL
 );
 
-CREATE TABLE horarios
-(
-	id_horario INT PRIMARY KEY,
-	id_materia INT NOT NULL,
-	ho_hora_ini TINYINT NOT NULL,
-	ho_hora_fin TINYINT NOT NULL,
-	ho_dia TINYINT NOT NULL
-);
 
-alter table horarios add foreign key (id_materia) references materias (id_materia);
 
 CREATE TABLE familiares_alumno
 (
@@ -147,3 +138,63 @@ insert into grupos
 insert into materias 
    (id_materia, ma_nombre, ma_descri) values
    (1000, 'M_Prueba', 'Registro de prueba para la base de datos');
+
+----------------------------------------Relaciones de tablas--------------------------------------
+
+   CREATE TABLE relacion_materia_grupo
+(
+	id_relacion INT PRIMARY KEY AUTO_INCREMENT,
+	id_materia INT NOT NULL,
+	id_grupo INT NOT NULL,
+	id_registrador INT NOT NULL,
+	rmg_fecha_reg TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+    ON UPDATE CURRENT_TIMESTAMP
+);
+
+alter table relacion_materia_grupo add foreign key (id_materia) references  materias (id_materia);
+alter table relacion_materia_grupo add foreign key (id_grupo) references  grupos (id_grupo);
+alter table relacion_materia_grupo add foreign key (id_registrador) references  personas (id_persona);
+
+   CREATE TABLE relacion_estudiante_grupo
+(
+	id_relacion INT PRIMARY KEY AUTO_INCREMENT,
+	id_estudiante INT NOT NULL,
+	id_grupo INT NOT NULL,
+	id_registrador INT NOT NULL,
+	rmg_fecha_reg TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+    ON UPDATE CURRENT_TIMESTAMP
+);
+
+alter table relacion_estudiante_grupo add foreign key (id_estudiante) references  personas (id_persona);
+alter table relacion_estudiante_grupo add foreign key (id_grupo) references  grupos (id_grupo);
+alter table relacion_estudiante_grupo add foreign key (id_registrador) references  personas (id_persona);
+
+   CREATE TABLE relacion_materia_profesor
+(
+	id_relacion INT PRIMARY KEY AUTO_INCREMENT,
+	id_profesor INT NOT NULL,
+	id_materia INT NOT NULL,
+	id_registrador INT NOT NULL,
+	rmg_fecha_reg TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+    ON UPDATE CURRENT_TIMESTAMP
+);
+
+alter table relacion_materia_profesor add foreign key (id_profesor) references  personas (id_persona);
+alter table relacion_materia_profesor add foreign key (id_materia) references  materias (id_materia);
+alter table relacion_materia_profesor add foreign key (id_registrador) references  personas (id_persona);
+
+
+CREATE TABLE horarios
+(
+	id_horario INT PRIMARY KEY,
+	id_materia INT NOT NULL,
+	ho_hora_ini TINYINT NOT NULL,
+	ho_hora_fin TINYINT NOT NULL,
+	ho_dia TINYINT NOT NULL,
+	id_profesor INT NOT NULL,
+	id_registrador INT NOT NULL
+);
+
+alter table horarios add foreign key (id_materia) references materias (id_materia);
+alter table horarios add foreign key (id_profesor) references personas (id_persona);
+alter table horarios add foreign key (id_registrador) references personas (id_persona);

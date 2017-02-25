@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+<?php
+
+include('../org.giwepp_pf.bd/bd_checar_persona.php');
+if($_SESSION['user_type'] != 3){echo "<meta http-equiv='refresh' content='0;url=index.html'>";}
+?>
+
+
 <html lang="en">
     <head>
         <title>Tareas</title>
@@ -52,7 +60,7 @@
                         <div class="row">
 
                             <div class="col-lg-offset-1 col-md-8">
-                                <h1 class="text-primary">Tarea</h1>
+                                <h1 class="text-primary">Tarea </h1>
                             </div><!--end .col -->
 
                             <div class="col-lg-offset-1 col-md-10">
@@ -63,22 +71,61 @@
                                                 <input type="text" class="form-control" id="txtTarea" name="txtTarea" required data-rule-minlength="2">
                                                 <label for="txtTarea">Titulo de la tarea</label>
                                             </div>
+
+                                            <input type="hidden" name="txtidProfesor" value=<?php echo $_SESSION['user_person'] ; ?>>
+
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="txtDescripcionTarea" name="txtDescripcionTarea" required data-rule-minlength="2">
                                                 <label for="txtDescripcionTarea">Descripción de la tarea</label>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="txtidGrupo" name="txtidGrupo" required data-rule-minlength="2">
-                                                <label for="txtidGrupo">ID del Grupo</label>
-                                            </div>
-                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="txtidProfesor" name="txtidProfesor" required data-rule-minlength="2">
-                                                <label for="txtidProfesor">ID del Profesor</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="txtidMateria" name="txtidMateria" required data-rule-minlength="2">
-                                                <label for="txtidMateria">ID Materia</label>
-                                            </div>
+                                        
+
+                                              <div class="form-group">  <label for="txtidGrupo"> Elija el grupo </label>
+                                                <select name="txtidGrupo">
+
+                                                <?php    
+                                                  $conexion=conexion();  if(!$conexion)   die();
+                                                  $consulta="select id_grupo, gr_nombre from grupos ";
+                                                  $resultado=mysql_query($consulta,$conexion);
+                                                  while($grupos=mysql_fetch_assoc($resultado))
+                                                  {
+                                                  ?>
+
+                                                  <option value=<?php echo $grupos['id_grupo'] ?> ><?php echo $grupos['gr_nombre'] ?></option>
+
+                                                  <?php 
+                                                  }
+                                                  mysql_close($conexion);
+                                                  ?>
+ 
+                                                  
+                                                  </select>
+                                              </div>
+
+
+                                              <div class="form-group">  <label for="txtidMateria"> Elija la materia </label>
+                                                <select name="txtidMateria">
+
+                                                <?php    
+                                                  $conexion=conexion();  if(!$conexion)   die();
+                                                  $consulta="select id_materia, ma_nombre from materias ";
+                                                  $resultado=mysql_query($consulta,$conexion);
+                                                  while($materias=mysql_fetch_assoc($resultado))
+                                                  {
+                                                  ?>
+
+                                                  <option value=<?php echo $materias['id_materia'] ?> ><?php echo $materias['ma_nombre'] ?></option>
+
+                                                  <?php 
+                                                  }
+                                                  mysql_close($conexion);
+                                                  ?>
+ 
+                                                  
+                                                  </select>
+                                              </div>
+
+
                                             <div class="form-group">
                                                 <div class="input-group date" id="demo-date">
                                                     <div class="input-group-content">

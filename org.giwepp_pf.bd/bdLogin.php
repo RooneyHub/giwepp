@@ -30,6 +30,8 @@ class bdLogin extends conex {
             $_SESSION['user_session'] = $userRow['id_dueño'];
             $_SESSION['user_name'] = $userRow['c_usuario'];
             $_SESSION['user_type'] = $userRow['c_tipo_cuenta'];
+            $_SESSION['user_person'] = $userRow['id_dueño'];
+
             return true;
         } else {
             return false;

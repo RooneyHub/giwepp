@@ -96,7 +96,9 @@
                             <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
                                 <img src="libs/assets/img/avatar1.jpg" alt="" />
                                 <span class="profile-info">
-                                    <?php echo $_SESSION['nombre_usuario'];?>
+                                    <?php
+                                     $_GET['nombre_completo']
+                                     ?>
                                     <small>Profesor</small>
                                 </span>
                             </a>
